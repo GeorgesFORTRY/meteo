@@ -1,3 +1,5 @@
+import Location from './Location';
+
 export default function Results() {
   const dateBuilder = (d) => {
     const months = [
@@ -34,21 +36,8 @@ export default function Results() {
   return (
     <div className="result">
       <div className="location-box">
-        <div className="location">Lille, FR</div>
+        <Location />
         <div className="date">{dateBuilder(new Date())}</div>
-      </div>
-      <div className="weather-box">
-        <div className="weather-icon">image soleil</div>
-        <div className="temp">20°C</div>
-        <div className="weather">ensoleillé</div>
-      </div>
-      <div className="weather-details">
-        <div className="temp-max">22°C</div>
-        <div className="temp-min">15°C</div>
-        <div className="wind">20 km/h</div>
-        <div className="humidity">50%</div>
-        <div className="sunrise">Lever 7h42</div>
-        <div className="sunset">Coucher 19h18</div>
       </div>
     </div>
   );
