@@ -12,7 +12,7 @@ export default function Weather({ lon, lat }) {
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=metric&lang=fr&appid=192b907c21dd36680504d4722a863901`
       )
       .then(({ data }) => {
-        console.log(data);
+        console.log(data.current);
         setWeather(data.current.weather[0]);
         setStats(data.current);
       });
@@ -21,17 +21,27 @@ export default function Weather({ lon, lat }) {
   return (
     <>
       <div className="weather-box">
-        <div className="weather-icon">image soleil</div>
+        <img
+          className="weather-icon"
+          src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+          alt={`${weather.main}`}
+        />
         <div className="temp">{Math.round(stats.temp)}°C</div>
         <div className="weather">{weather.description}</div>
       </div>
       <div className="weather-details">
-        <div className="temp-max">22°C</div>
-        <div className="temp-min">15°C</div>
-        <div className="wind">20 km/h</div>
-        <div className="humidity">{stats.humidity}%</div>
-        <div className="sunrise">Lever 7h42</div>
-        <div className="sunset">Coucher 19h18</div>
+        <div className="wind">
+          Vitesse du vent {Math.round(stats.wind_speed)} km/h
+        </div>
+        <div className="humidity">Humidité {stats.humidity}%</div>
+        <div className="sunrise">
+          Lever du soleil{' '}
+          {new Date(stats.sunrise * 1000).toLocaleTimeString().slice(0, 5)}
+        </div>
+        <div className="sunset">
+          Coucher du soleil{' '}
+          {new Date(stats.sunset * 1000).toLocaleTimeString().slice(0, 5)}
+        </div>
       </div>
     </>
   );

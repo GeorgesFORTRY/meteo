@@ -1,6 +1,10 @@
-import Location from './Location';
+import styled from 'styled-components';
 
-export default function Results() {
+const SDate = styled.div`
+  text-align: center;
+  font-size: 30px;
+`;
+export default function CurrentDay() {
   const dateBuilder = (d) => {
     const months = [
       'Janvier',
@@ -34,11 +38,8 @@ export default function Results() {
   };
 
   return (
-    <div className="result">
-      <div className="location-box">
-        <Location />
-        <div className="date">{dateBuilder(new Date())}</div>
-      </div>
-    </div>
+    <SDate>
+      <div className="date">{dateBuilder(new Date())}</div>
+    </SDate>
   );
 }

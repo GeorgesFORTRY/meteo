@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
-import Results from './components/Results';
+import CurrentDay from './components/CurrentDay';
 import image from './assets/bluesky.jpg';
 
 const SApp = styled.div`
@@ -14,8 +14,8 @@ function App() {
   return (
     <SApp className="App">
       <Header />
+      <CurrentDay />
       <SearchBar />
-      <Results />
     </SApp>
   );
 }
