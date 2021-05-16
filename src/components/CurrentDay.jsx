@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 const SDate = styled.div`
   text-align: center;
-  font-size: 30px;
+  font-size: 35px;
 `;
+
 export default function CurrentDay() {
   const dateBuilder = (d) => {
     const months = [

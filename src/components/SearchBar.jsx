@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import image from '../assets/searchicon.png';
-import Location from './Location';
 
 const SResults = styled.div`
   display: flex;
@@ -29,13 +29,14 @@ const SearchBox = styled.form`
 
 export default function SearchBar() {
   const [city, setCity] = useState('');
-  const handleChange = (e) => {
-    e.preventDefault();
+  const history = useHistory();
+  const handleCityChange = () => {
+    history.push(`/location/${city}`);
   };
 
   return (
     <SResults>
-      <SearchBox className="search-box" onSubmit={handleChange}>
+      <SearchBox className="search-box" action="" onSubmit={handleCityChange}>
         <img src={image} alt="" />
         <input
           type="text"
@@ -45,7 +46,6 @@ export default function SearchBar() {
           onChange={(e) => setCity(e.target.value)}
         />
       </SearchBox>
-      {city !== '' && <Location city={city} />}
     </SResults>
   );
 }

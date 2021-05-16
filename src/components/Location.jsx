@@ -1,22 +1,24 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import Weather from './Weather';
 
 const SLocation = styled.div`
-  padding-top: 100px;
+  padding-top: 60px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const SCity = styled.p`
-  font-size: 30px;
-  margin-right: 200px;
+  font-size: 35px;
 `;
 
-export default function Location({ city }) {
+export default function Location() {
   const [location, setLocation] = useState([]);
   const [cityName, setCityName] = useState('');
+  const { city } = useParams();
 
   useEffect(() => {
     axios
@@ -36,7 +38,3 @@ export default function Location({ city }) {
     </SLocation>
   );
 }
-
-Location.propTypes = {
-  city: PropTypes.string.isRequired,
-};
